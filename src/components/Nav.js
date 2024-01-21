@@ -24,7 +24,7 @@ export default class Nav extends Component {
             <a href='/'>Menu</a>
           </li>
           <li>
-            <a href='/'>Reservations</a>
+            <a href='/bookings'>Reservations</a>
           </li>
           <li>
             <a href='/'>Order Online</a>
