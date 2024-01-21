@@ -3,12 +3,12 @@ import React, { useState } from 'react'
 const BookingForm = (props) => {
   const [date, setDate] = useState("");
   const [times, setTimes] = useState("");
-  const [guests, setGuest] = useState("");
+  const [guests, setGuests] = useState("");
   const [occasion, setOccasion] = useState("");
 
-  const handlesubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    props.SubmitForm(e);
+    props.submitForm(e);
   }
 
   const handleChange = (e) => {
@@ -18,7 +18,7 @@ const BookingForm = (props) => {
     return (
       <header>
         <section>
-          <form>
+          <form onSubmit={handleSubmit}>
             <fieldset>
               {/* choosing date*/}
               <div>
@@ -28,7 +28,7 @@ const BookingForm = (props) => {
               {/* choosing time*/}
               <div>
                 <label htmlFor='book-time'>Choose Time:</label>
-                <select id="book-time" value={times} onChange={(e) => setTimes(e.target.value)}>
+                <select id="book-time" value={times} onChange={(e) => setTimes(e.target.value)} required>
                   <option value=""> Select a time</option>
                   {
                     props.availableTimes.availableTimes.map(availableTimes => {return <option key={availableTimes}>{availableTimes}</option>})
@@ -38,18 +38,19 @@ const BookingForm = (props) => {
               {/* selecting number of guets*/}
               <div>
                 <label htmlFor='book-guests'>Number of guests:</label>
-                <input id='book-guests' min="1" value={guests} onChange={(e) => setGuest(e.target.value)}/>
+                <input id='book-guests' min="1" value={guests} onChange={(e) => {setGuests(e.target.value)}} type={"number"} placeholder={0} max={10} required/>
               </div>
               {/* occasion*/}
               <div>
                 <label htmlFor='book-occasion'>Occasion:</label>
-                <select id='book-occasion' key={occasion} value={occasion} onChange={(e) => setOccasion(e.target.value)}>
+                <select id='book-occasion' key={occasion} value={occasion} onChange={(e) => setOccasion(e.target.value)} required>
+                  <option value="">Select an option</option>
                   <option>Anniversary</option>
                   <option>Company party</option>
                 </select>
               </div>
               <div className='btnReceive'>
-                <input arial-label='On Click' type='submit' value={"Make your reservation"}/>
+                <input arial-label='On Click' type={"submit"} value={"Make your reservation"}/>
               </div>
             </fieldset>
           </form>

@@ -2,6 +2,7 @@ import React, { useReducer } from 'react'
 import {Route, Routes, useNavigate} from 'react-router-dom';
 import Header from './Header';
 import Bookings from './Bookings';
+import ConfirmedBooking from './ConfirmedBooking';
 
 function Main() {
 
@@ -50,7 +51,7 @@ function Main() {
       <Routes>
         <Route path='/' element={<Header/>}/>
         <Route path='/bookings' element={<Bookings availableTimes={state} dispatch={dispatch} submitForm={submitForm}/>}/>
-        <Route path='/' element={<Header/>}/>
+        <Route path='/confirmed' element={<ConfirmedBooking/>}/>
       </Routes>
     </main>
   )
